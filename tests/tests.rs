@@ -3,13 +3,13 @@ use kvs::KvStore;
 use predicates::str::contains;
 use std::process::Command;
 
-// `kvs` with no args should exit with a non-zero code.
+// `kv` with no args should exit with a non-zero code.
 #[test]
 fn cli_no_args() {
     Command::cargo_bin("kvs").unwrap().assert().failure();
 }
 
-// `kvs -V` should print the version
+// `kv -V` should print the version
 #[test]
 fn cli_version() {
     Command::cargo_bin("kvs")
@@ -19,7 +19,7 @@ fn cli_version() {
         .stdout(contains(env!("CARGO_PKG_VERSION")));
 }
 
-// `kvs get <KEY>` should print "unimplemented" to stderr and exit with non-zero code
+// `kv get <KEY>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
 fn cli_get() {
     Command::cargo_bin("kvs")
@@ -30,7 +30,7 @@ fn cli_get() {
         .stderr(contains("unimplemented"));
 }
 
-// `kvs set <KEY> <VALUE>` should print "unimplemented" to stderr and exit with non-zero code
+// `kv set <KEY> <VALUE>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
 fn cli_set() {
     Command::cargo_bin("kvs")
@@ -41,7 +41,7 @@ fn cli_set() {
         .stderr(contains("unimplemented"));
 }
 
-// `kvs rm <KEY>` should print "unimplemented" to stderr and exit with non-zero code
+// `kv rm <KEY>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
 fn cli_rm() {
     Command::cargo_bin("kvs")
